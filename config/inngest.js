@@ -3,7 +3,11 @@ import connectDb from "./db";
 import User from "@/models/User";
 
 // Create a client to send and receive events
-export const inngest = new Inngest({ id: "quickcart-next" });
+export const inngest = new Inngest({
+  id: "quickcart-next",
+  signingKey: process.env.INNGEST_SIGNING_KEY
+});
+
 
 // inngest function to save the user data to database 
 export const syncUserCreation = inngest.createFunction(
